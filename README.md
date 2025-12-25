@@ -7,7 +7,8 @@ focused on understanding how STM32 works.
 - STM32CubeMX is used once
 - All generated files are stored in `bsp/stm32f103c8/` (Board Support Package)
 - Each experiment lives in its own folder at the repository root
-- Each experiment use their own `main.c` and adjust `Makefile` to link it to same bsp
+- Each experiment use their own `main.c` and adjust `Makefile` to link it to same bsp.
+  
 This approach allows experimenting with different concepts without regenerating code or changing baseline since only one board is used and for clean/consistent repo.
 
 ## Setup Used
