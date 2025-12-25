@@ -8,6 +8,8 @@
 # ChangeLog :
 #	2017-02-10 - Several enhancements + project update mode
 #   2015-07-22 - first version
+#	2025-12-1  - custom path for global board system package
+#   EDITED FOR CUSTOM LEARNING WORKFLOW BY YSND
 # ------------------------------------------------
 
 ######################################
@@ -36,30 +38,30 @@ BUILD_DIR = build
 ######################################
 # C sources
 
-VENDOR = ../../vendor/stm32f103c8
+BSP = ../../bsp/stm32f103c8
 
 C_SOURCES =  \
-$(VENDOR)/Core/Src/main.c \
-$(VENDOR)/Core/Src/stm32f1xx_it.c \
-$(VENDOR)/Core/Src/stm32f1xx_hal_msp.c \
-$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c \
-$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c \
-$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c \
-$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c \
-$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c \
-$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c \
-$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c \
-$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c \
-$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c \
-$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c \
-$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c \
-$(VENDOR)/Core/Src/system_stm32f1xx.c \
-$(VENDOR)/Core/Src/sysmem.c \
-$(VENDOR)/Core/Src/syscalls.c  
+$(BSP)/Core/Src/main.c \
+$(BSP)/Core/Src/stm32f1xx_it.c \
+$(BSP)/Core/Src/stm32f1xx_hal_msp.c \
+$(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c \
+$(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c \
+$(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c \
+$(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c \
+$(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c \
+$(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c \
+$(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c \
+$(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c \
+$(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c \
+$(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c \
+$(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c \
+$(BSP)/Core/Src/system_stm32f1xx.c \
+$(BSP)/Core/Src/sysmem.c \
+$(BSP)/Core/Src/syscalls.c  
 
 # ASM sources
 ASM_SOURCES =  \
-$(VENDOR)/startup_stm32f103xb.s
+$(BSP)/startup_stm32f103xb.s
 
 # ASMM sources
 ASMM_SOURCES = 
@@ -116,11 +118,11 @@ AS_INCLUDES =
 
 # C includes
 C_INCLUDES =  \
--I$(VENDOR)/Core/Inc \
--I$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy \
--I$(VENDOR)/Drivers/STM32F1xx_HAL_Driver/Inc \
--I$(VENDOR)/Drivers/CMSIS/Device/ST/STM32F1xx/Include \
--I$(VENDOR)/Drivers/CMSIS/Include
+-I$(BSP)/Core/Inc \
+-I$(BSP)/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy \
+-I$(BSP)/Drivers/STM32F1xx_HAL_Driver/Inc \
+-I$(BSP)/Drivers/CMSIS/Device/ST/STM32F1xx/Include \
+-I$(BSP)/Drivers/CMSIS/Include
 
 
 # compile gcc flags
@@ -141,7 +143,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 # LDFLAGS
 #######################################
 # link script
-LDSCRIPT = $(VENDOR)/STM32F103XX_FLASH.ld
+LDSCRIPT = $(BSP)/STM32F103XX_FLASH.ld
 
 # libraries
 LIBS = -lc -lm -lnosys 
