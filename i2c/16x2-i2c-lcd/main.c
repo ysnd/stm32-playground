@@ -130,7 +130,7 @@ void lcd_init(void) {
     lcd_send_cmd(0x20);
 
     lcd_send_cmd(0x28);
-    lcd_send_cmd(0x80);
+    lcd_send_cmd(0x08);
     lcd_send_cmd(0x01);
     HAL_Delay(2);
     lcd_send_cmd(0x06);
