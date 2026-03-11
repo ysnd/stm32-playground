@@ -57,7 +57,8 @@ $(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c \
 $(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c \
 $(BSP)/Core/Src/system_stm32f1xx.c \
 $(BSP)/Core/Src/sysmem.c \
-$(BSP)/Core/Src/syscalls.c  
+$(BSP)/Core/Src/syscalls.c \
+$(BSP)/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -192,11 +193,19 @@ $(BUILD_DIR):
 #######################################
 clean:
 	-rm -fR $(BUILD_DIR)
+
+
+flash:
+	@echo "Flashing with OpenOCD..."
+	openocd -f interface/stlink.cfg -f target/stm32f1x.cfg \
+        -c "init" \
+        -c "reset halt" \
+		-c "program build/$(TARGET).elf verify reset exit"
   
 #######################################
 # dependencies
 #######################################
 -include $(wildcard $(BUILD_DIR)/*.d)
 
-# *** EOF ***
+# *** EOF *** 
 
