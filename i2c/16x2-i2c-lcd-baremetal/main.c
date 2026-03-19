@@ -55,7 +55,7 @@ void gpio_init() {
 void i2c1_init() {
     RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
 
-    I2C1->CR1 &= !I2C_CR1_PE;
+    I2C1->CR1 &= ~I2C_CR1_PE;
 
     I2C1->CR2 = 36; //apb1 36Mhz
     I2C1->CCR = 180; //100khz
