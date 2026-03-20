@@ -26,7 +26,7 @@ void clock_init() {
 }
 
 void systick_init(void) {
-    SysTick-> LOAD = 72000 - 1;
+    SysTick->LOAD = 72000 - 1;
     SysTick->VAL = 0;
     SysTick->CTRL = 7; //enable + interrupt + core clock 
 }
@@ -86,7 +86,7 @@ void EXTI1_IRQHandler(void) {
             GPIOC->ODR ^= (1 << 13);
             last_press1 = ms_ticks;
         }
-        EXTI->PR |= (1 << 0);
+        EXTI->PR |= (1 << 1);
     }
 }
 
